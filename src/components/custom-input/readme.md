@@ -9,9 +9,16 @@ Some of them using default state.
 At the moment custom-input has one realisation for URL input.
 To add more input types you need to extend 'InputType', and add extendable components with its logic.
 
-* type: InputType = InputType.URL; // defines te input type that will be used
+Input custom event emits custom data object in detail property of CustomEvent.
+Object example:
+{
+  value: string,
+  isValid: boolean,
+}
+
+* type: InputType = InputType.URL; // defines input type that will be used
 * isValid: boolean = true; // defines validity from outside of component
-* size: InputSize; // defines size of input
+* size: InputSize; // defines size of input currently there is only 'large' and 'default' options
 * validationPattern: string; // defines validation pattern for input
 * inputTitle: string = 'Input title'; // defines title for input
 
