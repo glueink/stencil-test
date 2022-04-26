@@ -1,4 +1,4 @@
-# custom-input
+# url-input
 
 
 
@@ -9,31 +9,31 @@
 
 | Property            | Attribute            | Description | Type                                   | Default         |
 | ------------------- | -------------------- | ----------- | -------------------------------------- | --------------- |
-| `inputTitle`        | `input-title`        |             | `string`                               | `'Input title'` |
+| `inputTitle`        | `input-title`        |             | `string`                               | `undefined`     |
 | `isValid`           | `is-valid`           |             | `boolean`                              | `undefined`     |
 | `size`              | `size`               |             | `InputSize.DEFAULT \| InputSize.LARGE` | `undefined`     |
 | `type`              | `type`               |             | `InputType.TEXT \| InputType.URL`      | `InputType.URL` |
-| `validationPattern` | `validation-pattern` |             | `string`                               | `undefined`     |
+| `validationPattern` | `validation-pattern` |             | `string`                               | `'https?://.+'` |
 
 
 ## Events
 
-| Event         | Description | Type                                                |
-| ------------- | ----------- | --------------------------------------------------- |
-| `onUserInput` |             | `CustomEvent<{ value: string; isValid: boolean; }>` |
+| Event       | Description | Type                                                |
+| ----------- | ----------- | --------------------------------------------------- |
+| `userInput` |             | `CustomEvent<{ value: string; isValid: boolean; }>` |
 
 
 ## Dependencies
 
-### Depends on
+### Used by
 
-- [url-input](../url-input)
+ - [custom-input](../custom-input)
 
 ### Graph
 ```mermaid
 graph TD;
   custom-input --> url-input
-  style custom-input fill:#f9f,stroke:#333,stroke-width:4px
+  style url-input fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
