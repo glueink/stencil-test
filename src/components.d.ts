@@ -9,14 +9,14 @@ import { InputSize, InputType, UserInputEvent } from "./components/types";
 export namespace Components {
     interface CustomInput {
         "inputTitle": string;
-        "isValid": boolean;
+        "isValid": boolean | undefined;
         "size": InputSize;
         "type": InputType;
         "validationPattern": string;
     }
     interface UrlInput {
         "inputTitle": string;
-        "isValid": boolean;
+        "isValid": boolean | undefined;
         "size": InputSize;
         "type": InputType;
         "validationPattern": string;
@@ -43,7 +43,7 @@ declare global {
 declare namespace LocalJSX {
     interface CustomInput {
         "inputTitle"?: string;
-        "isValid"?: boolean;
+        "isValid"?: boolean | undefined;
         "onOnUserInput"?: (event: CustomEvent<UserInputEvent>) => void;
         "size"?: InputSize;
         "type"?: InputType;
@@ -51,7 +51,7 @@ declare namespace LocalJSX {
     }
     interface UrlInput {
         "inputTitle"?: string;
-        "isValid"?: boolean;
+        "isValid"?: boolean | undefined;
         "onUserInput"?: (event: CustomEvent<UserInputEvent>) => void;
         "size"?: InputSize;
         "type"?: InputType;

@@ -9,7 +9,7 @@ import { CustomInputProps, InputType, InputSize, UserInputEvent } from '../types
 export class CustomInput implements CustomInputProps {
   @Prop() type: InputType = InputType.URL;
 
-  @Prop() isValid: boolean = true;
+  @Prop() isValid: boolean | undefined;
   
   @Prop() size: InputSize;
 

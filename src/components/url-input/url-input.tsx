@@ -10,7 +10,7 @@ import { errorByInputType } from '../utils';
 export class UrlInput implements CustomInputProps {
   @Prop() type: InputType = InputType.URL;
 
-  @Prop() isValid: boolean = true;
+  @Prop() isValid: boolean | undefined;
   
   @Prop() size: InputSize;
 
@@ -41,7 +41,7 @@ export class UrlInput implements CustomInputProps {
       'url-input__input': true,
       [`url-input__input--${this.size}`]: true,
       'url-input--error': this.isShowError,
-      'url-input--success': !this.inputErrorString && this.blured,
+      'url-input--success': !this.inputErrorString && this.blured && !!this.inputValue,
     }
   }
 
@@ -51,15 +51,29 @@ export class UrlInput implements CustomInputProps {
     elementTarget.setCustomValidity('');
     this.inputErrorString = elementTarget.validationMessage;
     const rule = new RegExp(this.validationPattern);
-    if (!rule.test(elementTarget.value) || !this.isValid) {
+
+    if (this.isValid === false) {
       elementTarget.setCustomValidity(errorMessage);
       this.inputErrorString = errorMessage;
       this.userInput.emit({ value: elementTarget.value, isValid: false });
-    } else {
+      return;
+    } else if (this.isValid === true) {
       elementTarget.setCustomValidity('');
       this.inputErrorString = '';
       this.userInput.emit({ value: elementTarget.value, isValid: true });
+      return;
     }
+
+    if (!rule.test(elementTarget.value)) {
+      elementTarget.setCustomValidity(errorMessage);
+      this.inputErrorString = errorMessage;
+      this.userInput.emit({ value: elementTarget.value, isValid: false });
+      return;
+    }
+
+    elementTarget.setCustomValidity('');
+    this.inputErrorString = '';
+    this.userInput.emit({ value: elementTarget.value, isValid: true });
   }
 
   private async inputHandler(_event: Event) {

@@ -9,17 +9,20 @@
     <script nomodule src="/build/arvato-test.js"></script>
   </head>
   <body>
-    <custom-input type="url"></custom-input>
-    <!-- <custom-input type="url" is-valid="false"></custom-input> -->
-    <!-- <custom-input type="url" validation-pattern="^https?://www\..*$"></custom-input> -->
+    <custom-input input-title="Only input-title property defined"></custom-input>
+    <custom-input type="url" input-title="Example with alwais invalid input" is-valid="false"></custom-input>
+    <custom-input type="url" input-title="Example with alwais valid input" is-valid="true"></custom-input>
+    <custom-input type="url" input-title="Example with pattern" validation-pattern="^https?://www\..*$"></custom-input>
     <script>
-      let input = document.querySelector('custom-input');
-      input.addEventListener('userInput', function (data) {
-        console.log('userInput', data);
-      });
+      let inputs = document.querySelectorAll('custom-input');
+      inputs.forEach((input) => {
+        input.addEventListener('userInput', function (data) {
+          console.log('userInput', data);
+        });
 
-      input.addEventListener('onUserInput', function (data) {
-        console.log('onUserInput', data);
+        input.addEventListener('onUserInput', function (data) {
+          console.log('onUserInput', data);
+        });
       });
     </script>
   </body>
