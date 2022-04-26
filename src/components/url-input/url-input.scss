@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  .url-input {
+    cursor: text;
+    display: block;
+    
+    &__title {
+      display: block;
+      margin-bottom: 5px;
+    }
+    
+    &__input {
+      height: 36px;
+      width: 300px;
+      border: 2px solid black;
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+
+      &--large {
+        height: 44px;
+        width: 300px;
+        font-size: 20px;
+      }
+    }
+    
+    &__error {
+      display: block;
+      color: crimson;
+    }
+    
+    &--error {
+      border: 2px solid red;
+      background-color: mistyrose;
+    }
+
+    &--success {
+      border: 2px solid green;
+      background-color: lemonchiffon;
+    }
+  }
+}
